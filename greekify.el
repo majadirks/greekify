@@ -6,7 +6,7 @@
 
 ;;greekify: run greekify on the whole file
 (defun greekify()
-  "run germanify on current file and revert the buffer"
+  "run greekify on current file and revert the buffer"
   (interactive) ;;I don't know what this does.
   (setq myname (buffer-file-name))
   (save-buffer) ;;Save, lest greekify delete unsaved changes
