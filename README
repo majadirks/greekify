@@ -1,0 +1,97 @@
+Greekify
+Matthew Dirks
+Version 0.3 (March 2013)
+
+I. Description
+II. Transliterating text files from the command line
+III. Transliteratign text files from emacs
+IV. Desired features
+V. Bug reporting
+
+I. Description
+
+There is a paucity of options for typing in polytonic Greek in Linux. Although there is a polytonic Greek keyboard layout, it lacks breathing marks and the ability to put multiple diacritic marks on a single character (e.g. a circumflex and an iota subscript). This program takes ASCII input and transliterates it into Greek, loosely following the conventions on the Tufts Perseus Greek Word Study Tool website (http://www.perseus.tufts.edu/hopper/morph, accessed 1/9/2013). Specifically, we map 
+ alpha   : a
+ beta    : b
+ gamma   : g
+ delta   : d
+ epsilon : e
+ zeta    : z
+ eta     : h
+ theta   : q
+ iota    : i
+ kappa   : k
+ lambda  : l
+ mu      : m
+ nu      : n
+ xi      : c
+ omicron : o
+ pi      : p
+ rho     : r
+ medial sigma (σ) : s
+ terminal sigma (ς) : w
+ tau      : t
+ upsilon  : u
+ phi      : f
+ chi      : x
+ psi      : y
+ omega    : v
+ majuscule digamma  : #
+ minuscule digamma  : 3
+ majuscule koppa : %
+ minuscule koppa : 5
+ interpunct (·) : *
+
+Vowels and rho can be modified with breathings, accents, and iota subscripts by putting special modifier characters before them:
+ acute            : /
+ grave            : -
+ circumflex       : =
+ smooth breathing : (
+ rough breathing  : )
+ iota subscript   : |
+
+Note that the order of modifications does not matter.
+Modifiers cannot be used on characters that have already 
+been transliterated. Hence, 
+    greekify "μ=ηνιν"
+yields
+    "μ=ηνιν".
+
+Important deviations from Perseus: 
+*While Perseus requires modifiers to succeed the letter they modify, we expect modifiers to precede the letter they modify.
+*While Perseus does not distinguish between ς and σ, we transliterate w->ς and s->σ. 
+*Perseus transliterates w->ω; since this conflicts with our convention w->ς, we substitue v->ω.
+*Because of conflicts with the escape character, the modifier for our graves is -, not \.
+De gustibus non est disputandum. 
+
+The text to transliterate is passed as a command line argument contained in quotation marks. For example, running
+   greekify "m=hnin )/aeide qe-a Phlhi/adev )Axil=how"
+yields
+   μῆνιν ἄειδε θεὰ Πηληιάδεω Ἀχιλῆος
+
+II. Transliterating text files from the command line
+
+If a text file (say "foo.txt") contains text to greekify, one can harness the "cat" command-line tool to transliterate it, thus:
+
+ greekify "`cat foo.txt`" > foo.txt
+
+III. Transliterating text files from emacs
+
+The elisp script greekify.el automates the above shell command. It first saves your file to keep greekify from removing unsaved changes, runs greekify on the saved file, and then updates the buffer without asking for confirmation.
+
+To enable greekify in emacs, follow these steps:
+   1) In emacs, enter "M-x load-file RET /path/to/greekify.el".
+   2) From the buffer to be greekified, enter "M-x greekify".
+
+greekify.el also defines the function "greekify-region", which (of course) will greekify the current region.
+
+One load greekify.el automatically at startup by adding the following lines to ~/.emacs:
+    
+    ;;greekify: transliterate ASCII to polytonic Greek
+    (load "/path/to/greekify.el")
+
+IV. Desired features
+greekify does not yet support lunate sigmas (Ϲ, ϲ).
+
+V. Bug reporting
+To submit bugs, errors, or other comments, please contact Matthew Dirks at majadirks@gmail.com.
