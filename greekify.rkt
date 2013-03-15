@@ -64,7 +64,7 @@ nl
 "been transliterated. Hence, " nl
 "    greekify \"μ=ηνιν\"" nl
 "yields"nl
-"    \"μ=ηνιν\"." nl
+"    \"μῆνιν\"." nl
 nl
 "Important deviations from Perseus: " nl
 "*While Perseus requires modifiers to succeed the letter "
