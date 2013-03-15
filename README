@@ -55,7 +55,7 @@ Modifiers cannot be used on characters that have already
 been transliterated. Hence, 
     greekify "μ=ηνιν"
 yields
-    "μ=ηνιν".
+    "μῆνιν".
 
 Important deviations from Perseus: 
 *While Perseus requires modifiers to succeed the letter they modify, we expect modifiers to precede the letter they modify.
