@@ -92,6 +92,3 @@ One load greekify.el automatically at startup by adding the following lines to ~
 
 IV. Desired features
 greekify does not yet support lunate sigmas (Ϲ, ϲ).
-
-V. Bug reporting
-To submit bugs, errors, or other comments, please contact Matthew Dirks at majadirks@gmail.com.
