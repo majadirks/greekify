@@ -1,8 +1,6 @@
 ;; greekify.el -- run "greekify" on the contents of the current file
 ;; and update the file with the results
 ;; Version 0.3 (March 2013)
-;; Send bugs, errors, or other comments to
-;; Matthew Dirks (majadirks@gmail.com)
 
 ;;greekify: run greekify on the whole file
 (defun greekify()
